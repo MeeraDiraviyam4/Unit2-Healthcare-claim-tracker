@@ -41,7 +41,7 @@ public class ClaimController {
     }
 
     @PutMapping("/{id}")
-    public Claim updateClaim(@PathVariable Long id, @RequestBody Claim updatedClaim) {
+    public Claim updatedClaim(@PathVariable Long id, @RequestBody Claim updatedClaim) {
         updatedClaim.setId(id);
         return claimRepository.save(updatedClaim);
     }
@@ -49,5 +49,17 @@ public class ClaimController {
     @DeleteMapping("/{id}")
     public void deleteClaim(@PathVariable Long id) {
         claimRepository.deleteById(id);
+    }
+
+
+    @GetMapping("/summary")
+    public String getSummary() {
+        List<Claim> claims = claimRepository.findAll();
+        long total = claims.size();
+        long pending = claims.stream().filter(claim -> "PENDING".equals(claim.getStatus())).count();
+        long approved = claims.stream().filter(claim -> "APPROVED".equals(claim.getStatus())).count();
+        long denied = claims.stream().filter(claim -> "DENIED".equals(claim.getStatus())).count();
+        return "Total: " + total + ", Pending: " + pending + ", Approved: " + approved + ", Denied: " + denied;
+
     }
 }
