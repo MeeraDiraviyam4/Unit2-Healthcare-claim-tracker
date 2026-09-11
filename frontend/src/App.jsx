@@ -11,7 +11,7 @@ import SubmitClaim from "./pages/SubmitClaim";
 function App() {
 
   return(
-    <BrowserRouter> // wraps the application to enable routing functionality
+    <BrowserRouter> {/* wraps the application to enable routing functionality */}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
