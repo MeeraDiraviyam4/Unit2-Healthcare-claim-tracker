@@ -7,14 +7,13 @@ function Navbar() {
 
         <h2>Healthcare Claim Tracker</h2>
     
-        <div className = "nav-links">
+        <div className="nav-links">
           <Link to="/dashboard">Dashboard</Link>
           <Link to="/claims">Claims</Link>
           <Link to="/submit-claim">Submit Claim</Link>
           <Link to="/payment">Payment</Link>
           <Link to="/register">Register</Link>
-    {/* Sends the user back to the login page */}
-          <Link to="/login">Logout</Link>
+          <Link to="/">Logout</Link>
         </div>
         </nav>
     );

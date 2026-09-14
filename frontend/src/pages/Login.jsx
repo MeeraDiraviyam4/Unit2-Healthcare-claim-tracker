@@ -5,10 +5,16 @@ function Login() {
             <h2>Login</h2>
             
             <label> Email:</label>
-            <input type="email"  placeholder="Enter your email" />
+            <input 
+              type="email"  
+              placeholder="Enter your email" 
+            />
             <br />            
             <label> Password:</label>
-            <input type="password"  placeholder="Enter your password" />
+            <input 
+              type="password"  
+              placeholder="Enter your password" 
+            />
             <br />
             <button>Login</button>
 
