@@ -14,6 +14,7 @@ function App() {
     <BrowserRouter> {/* wraps the application to enable routing functionality */}
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/claims" element={<Claims />} />
         <Route path="/register" element={<Register />} />

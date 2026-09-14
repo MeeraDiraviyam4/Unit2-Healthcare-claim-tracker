@@ -7,15 +7,14 @@ function Navbar() {
 
         <h2>Healthcare Claim Tracker</h2>
     
-    {/* Navigation links to different pages of the application */}
         <div className = "nav-links">
-          <a href = "/dashboard">Dashboard</a>
-          <a href = "/claims">Claims</a>
-          <a href = "/submit-claim">Submit Claim</a>
-          <a href = "/payment">Payment</a>
-          <a href = "/register">Register</a>
+          <Link to="/dashboard">Dashboard</Link>
+          <Link to="/claims">Claims</Link>
+          <Link to="/submit-claim">Submit Claim</Link>
+          <Link to="/payment">Payment</Link>
+          <Link to="/register">Register</Link>
     {/* Sends the user back to the login page */}
-          <a href = "/login">Logout</a>
+          <Link to="/login">Logout</Link>
         </div>
         </nav>
     );

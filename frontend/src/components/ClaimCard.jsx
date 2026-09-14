@@ -2,9 +2,8 @@
 function ClaimCard({ claim }) {
     return(
        
-        //card container displays the indicidual claim information
+        
         <div className = "claim-card">
-            {/* Displays the unique claim ID */}
             <h3>Claim # {claim.id}</h3>
 
             {/* Displays the healthcare provider name */}
