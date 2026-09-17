@@ -14,11 +14,11 @@ function PaymentCard({ payment }) {
             </p>
 
             <p> 
-                <strong>Status:</strong> {payment.paymentStatus} 
+                <strong>Payment Status:</strong> {payment.paymentStatus} 
             </p>
 
             <p> 
-                <strong>Payment Date:</strong> 
+                <strong>Payment Date:</strong>{" "}
                 {payment.paymentDate 
                 ? payment.paymentDate 
                 : "Not paid yet"} 
