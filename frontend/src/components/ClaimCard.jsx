@@ -8,7 +8,7 @@ function ClaimCard({ claim }) {
 
             {/* Displays the healthcare provider name */}
              <p> 
-                <strong>Provider:</strong> {claim.provider} 
+                <strong>Provider:</strong> {claim.providerName} 
              </p>
 
              {/* Displays the type of medical service received */}
@@ -16,9 +16,14 @@ function ClaimCard({ claim }) {
                 <strong>Service:</strong> {claim.service} 
              </p>
 
+             {/* Displays the description */}
+             <p> 
+                <strong>Service:</strong> {claim.description} 
+             </p>
+
              {/* Displays the date on which the service was provided */}
              <p> 
-                <strong>Date:</strong> {claim.serviceDate}
+                <strong>Date:</strong> {claim.dateOfService}
              </p>
 
              {/* Displays the claim amount */}
@@ -30,6 +35,16 @@ function ClaimCard({ claim }) {
                 <p> 
                     <strong>Status:</strong> {claim.status}
                 </p>
+
+             {/* Displays the date the claim has been submitted */}
+                 <p> 
+                    <strong>Service:</strong> {claim.submittedDate} 
+                </p>
+             
+             {/* Displays the userid */}
+             <p> 
+                <strong>Service:</strong> {claim.userId} 
+             </p>
 
         </div>
 
