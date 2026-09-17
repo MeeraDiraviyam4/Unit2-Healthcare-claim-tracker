@@ -79,8 +79,8 @@ export async function loginUser(user) {
     }
 
     //create a claim
-    export async function createClaim(id, claim) {
-    const response = await fetch(`${API_URL}/Claims`,
+    export async function createClaim (claim) {
+    const response = await fetch(`${API_URL}/claims`,
         {
             method: "POST",
 
@@ -155,8 +155,8 @@ export async function loginUser(user) {
     }
 
     //update a payment
-    export async function updatePayment(claim, payment) {
-    const response = await fetch(`${API_URL}/payments/${calaimId}`,
+    export async function updatePayment(claimId, payment) {
+    const response = await fetch(`${API_URL}/payments/${claimId}`,
         {
             method: "PUT",
 
