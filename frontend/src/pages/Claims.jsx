@@ -6,7 +6,8 @@ import {getAllClaims} from "../services/api";
 function Claims() {
 
     const [claims, setClaims] = useState([]);
-
+    const [loading, SetLoading] = useState(true);
+    
     useEffect(() => {
 
         loadClaims();
@@ -24,6 +25,9 @@ function Claims() {
 
             alert(" Could not load claims. ");
 
+        } finally {
+
+            SetLoading(false);
         }
     }
 
@@ -35,12 +39,15 @@ function Claims() {
             <div className="claims-container">
 
                 <h1>Claims</h1>
-                {claims.length > 0 ? (
+
+                {loading && claims.length === 0 && (
                   
                   <p>No claims found.</p>
 
-                ) : (
-                    
+                )}
+
+                {loading && claims.length > 0 && (
+
                     claims.map((claim) => (
 
                         <ClaimCard key={claim.id} claim={claim} />
