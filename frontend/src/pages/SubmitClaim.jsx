@@ -7,7 +7,8 @@ function SubmitClaim() {
 
     const [providerName, setProviderName] = useState("");
     const [service, setService] = useState("");
-    const [serviceDate, setServiceDate] = useState("");
+    const [description, setDescription] = useState("");
+    const [dateOfService, setDateOfService] = useState("");
     const [amount, setAmount] = useState("");
     
     const navigate = useNavigate();
@@ -19,8 +20,9 @@ function SubmitClaim() {
         const claim = {
             providerName: providerName,
             service: service,
-            serviceDate: serviceDate,
-            amount: amount
+            description: description,
+            dateOfService: dateOfService,
+            amount: Number(amount)
         };
 
         try {
@@ -68,12 +70,23 @@ function SubmitClaim() {
                        required
                     />
 
-                   <label>Service Date:</label>
+                    <label>Description:</label>
+
+                    <input
+                       type="text"
+                       value={description}
+                       onChange={(event) => setDescription(event.target.value)}
+                       placeholder="Enter description"
+                       rows="4"
+                       required
+                    />
+
+                   <label>Date of Service:</label>
 
                     <input
                        type="date"
-                       value={serviceDate}
-                       onChange={(event) => setServiceDate(event.target.value)}
+                       value={dateOfService}
+                       onChange={(event) => setDateOfService(event.target.value)}
                        placeholder="Enter Service Date"
                        required
                     /> 
