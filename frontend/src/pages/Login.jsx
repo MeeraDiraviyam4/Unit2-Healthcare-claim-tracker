@@ -36,7 +36,7 @@ function Login() {
 
             <h1>Healthcare Claim Tracker</h1>
 
-            <h2>Login</h2>
+            <h2>Member Login</h2>
 
             <form onSubmit={handleLogin}>
 
@@ -67,7 +67,7 @@ function Login() {
 
                     <div>
 
-                        <button type="submit">Login</button>
+                        <button type="submit"> Member Login</button>
                     </div>
 
             </form>
