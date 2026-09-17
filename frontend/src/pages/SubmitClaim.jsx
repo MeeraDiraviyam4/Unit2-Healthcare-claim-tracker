@@ -10,7 +10,9 @@ function SubmitClaim() {
     const [description, setDescription] = useState("");
     const [dateOfService, setDateOfService] = useState("");
     const [amount, setAmount] = useState("");
-    
+    /*const [submittedDate, setSubmittedDate] = useState("");
+    const [userId, setUserId] = useState("");*/
+
     const navigate = useNavigate();
 
     async function handleSubmit(event) {
@@ -101,7 +103,7 @@ function SubmitClaim() {
                        placeholder="Enter Amount"
                        required
                     />
-
+                    
                      <button type="submit">
                         Submit Claim
                         </button>    
