@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { createClaim } from "../servies/api";
+import { createClaim } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 function SubmitClaim() {
