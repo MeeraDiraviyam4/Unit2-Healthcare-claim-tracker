@@ -120,6 +120,24 @@ export async function loginUser(user) {
 
     }
 
+    //delete a claim
+    export async function deleteClaim(id, claim) {
+    const response = await fetch(`${API_URL}/claims/${id}`,
+        {
+            method: "DELETE",
+
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Could not delete claim");
+    }
+ 
+       return;
+
+    }
+
+
     
     //Payments
     //Get payment for a claim
