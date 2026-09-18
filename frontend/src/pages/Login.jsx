@@ -45,8 +45,7 @@ function Login() {
 
             <form onSubmit={handleLogin}>
 
-                <div>
-                    <label>Email:</label>
+               <label>Email:</label>
 
                     <input
                         type="email"
@@ -55,9 +54,7 @@ function Login() {
                         placeholder="Enter your email"
                         required
                     />
-                    </div>
-
-                    <div>   
+                                                             
 
                         <label>Password:</label>
 
@@ -68,13 +65,9 @@ function Login() {
                            placeholder="Enter your password"
                            required
                         />
-                    </div>
-
-                    <div>
-
+                    
                         <button type="submit"> Member Login</button>
-                    </div>
-
+                    
             </form>
 
             <p>
