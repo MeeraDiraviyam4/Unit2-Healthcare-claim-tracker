@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import PaymentCard from "../components/PaymentCard";
+//import PaymentCard from "../components/PaymentCard";
 import { getPayment } from "../services/api";
 
 function Payment() {
@@ -31,7 +31,7 @@ function Payment() {
 
             <div className="form-container">
 
-                <h1>Payment</h1>
+                <h1>Payment Status</h1>
 
                 <form onSubmit={handlesearch}>
 
@@ -52,11 +52,30 @@ function Payment() {
                 </form>
 
                 {payment && (
-                    <PaymentCard payment={payment} />
-                )}
 
+                    <div className="payment-card">
+                        <h2> Payment Information </h2>
+
+                        <p> <strong>Payment ID:</strong>{" "} 
+                            {payment.id}
+                        </p>
+
+                        <p> <strong>Status:</strong>{" "}
+                            {payment.paymentStatus}
+                        </p>
+
+                        <p> <strong>Payment Date:</strong>{" "}
+                            {payment.paymentDate
+                               ? payment.paymentDate
+                               : "Not yet Paid"
+                            }
+                        </p>
+                    </div>
+                )}   
             </div>
-        </div>
+          
+        </div>    
     );
+
 }
 export default Payment;

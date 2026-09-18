@@ -32,20 +32,25 @@ function ClaimCard({ claim }) {
                 <strong>Amount:</strong>{" "} ${claim.amount}
              </p>
 
-             {/* Displays the claim status like pending, approved or denied */}
-                <p> 
-                    <strong>Status:</strong> {claim.status}
-                </p>
+             <p>
+                <strong>Status:</strong>{" "}
 
-             {/* Displays the date the claim has been submitted */}
-                 <p> 
-                    <strong>Service:</strong> {claim.submittedDate} 
-                </p>
-             
-             {/* Displays the userid */}
-             <p> 
-                <strong>Service:</strong> {claim.userId} 
-             </p>
+                <span
+                    className={
+                        "status " +
+                        claim.status?.toUpperCase()
+                    }
+                >
+                    {claim.status?.toUpperCase()}
+                </span>
+
+            </p>
+
+
+            <p>
+                <strong>Submitted:</strong>{" "}
+                {claim.submittedDate}
+            </p>
 
         </div>
 

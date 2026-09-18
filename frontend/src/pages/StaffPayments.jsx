@@ -9,9 +9,11 @@ function StaffPayments() {
 
             <div className="page-container">
 
-                <h1>Staff Payments</h1>
+                <h1>Manage Payments</h1>
 
-                <p>Staff can manage claim paymwnts here</p>
+                <p>Staff can manage claim payments here</p>
+
+                <p> Payment management can be added using the update payment API</p>
 
             </div>
         </div>
