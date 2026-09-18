@@ -125,3 +125,14 @@ body {
 
   border-radius: 8px;
 }
+
+.back-home {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+.back-home:hover {
+  text-decoration: underline;
+}

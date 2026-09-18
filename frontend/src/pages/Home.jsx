@@ -8,9 +8,7 @@ function Home () {
             <h1>Healthcare Claim Tracker</h1>
 
             <h2>Welcome!</h2>
-
-            <p>Please choose an option below</p>
-
+            
         <div>
 
            <Link to="/member-login">

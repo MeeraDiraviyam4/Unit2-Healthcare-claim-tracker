@@ -68,7 +68,7 @@ export async function loginUser(user) {
 
     //Get claims for one member
      export async function getClaimByMember(memberId) {
-    const response = await fetch(`${API_URL}/claims/member/${memberId}`,
+    const response = await fetch(`${API_URL}/claims/user/${userId}`,
         );
 
         if (!response.ok) {
@@ -143,7 +143,7 @@ export async function loginUser(user) {
 
     //Get payment for a claim
     export async function getPayment(claimId) {
-    const response = await fetch(`${API_URL}/payments/${claimId}`,
+    const response = await fetch(`${API_URL}/payments/claim/${claimId}`,
     );
 
     if (!response.ok) {

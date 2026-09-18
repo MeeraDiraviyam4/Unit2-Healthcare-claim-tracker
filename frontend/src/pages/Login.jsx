@@ -18,8 +18,13 @@ function Login() {
         };
 
         try {
-             await loginUser(user);
-
+             const loggedInUser = await loginUser(user);
+             // Save the logged-in user's information
+            // in localStorage
+             localStorage.setItem(
+                "user",
+                JSON.stringify(loggedInUser)
+             );
              alert("Login successful!");
 
              navigate("/dashboard");
@@ -75,6 +80,9 @@ function Login() {
             <p>
                 Don't have an account?{" "}
                 <Link to="/register">Register here</Link>
+            </p>
+            <p>
+                <Link to="/" className="back home">Back to Home </Link>
             </p>
             
         </div>
