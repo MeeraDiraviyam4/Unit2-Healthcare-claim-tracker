@@ -54,7 +54,7 @@ export async function loginUser(user) {
        return response.json();
     }   
 
-    //Get on claim
+    //Get one claim by ID
     export async function getClaimById(id) {
     const response = await fetch(`${API_URL}/claims/${id}`,
         );
@@ -67,12 +67,12 @@ export async function loginUser(user) {
     }    
 
     //Get claims for one member
-     export async function getClaimByMember(memberId) {
+     export async function getClaimByUser(userId) {
     const response = await fetch(`${API_URL}/claims/user/${userId}`,
         );
 
         if (!response.ok) {
-            throw new Error("Could not get claims");
+            throw new Error("Could not get member claims");
         }
 
         return response.json();
@@ -120,27 +120,8 @@ export async function loginUser(user) {
 
     }
 
-    //Delete a claim
-    export async function deleteClaim(id) {
-    const response = await fetch(`${API_URL}/claims/${id}`,
-        {
-            method: "DELETE",
-
-           /* headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(claim)*/
-        }
-    );
-
-    if (!response.ok) {
-        throw new Error("Could not delete claim");
-    }
- 
-      return response.json();
-
-    }
-
+    
+    //Payments
     //Get payment for a claim
     export async function getPayment(claimId) {
     const response = await fetch(`${API_URL}/payments/claim/${claimId}`,
