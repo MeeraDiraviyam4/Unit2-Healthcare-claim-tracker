@@ -1,11 +1,12 @@
 import {useState, useEffect} from "react";
 import Navbar from "../components/Navbar";
 import {getClaimsByUser} from "../services/api";
+import ClaimCard from "../components/ClaimCard";
 
 function Claims() {
 
     const [claims, setClaims] = useState([]); // stores all claims
-    const [loading, SetLoading] = useState(true); // track loading
+    const [loading, setLoading] = useState(true); // track loading
     const [statusFilter, setStatusFilter] = useState("ALL"); // store selected filter
 
     
@@ -40,10 +41,11 @@ function Claims() {
 
         } finally {
 
-            SetLoading(false); //loading stops
+            setLoading(false); //loading done
         }
     }
-
+    
+    //convert to uppercase
     function getStatus(status) {
         return status?.toUpperCase();
     }
@@ -88,63 +90,22 @@ function Claims() {
 
                 </div>
 
+                {loading && (
+
+                    <p> Loading claims...</p>
+                )}
+
                 {loading && filteredClaims.length === 0 && (
                   
                   <p>No claims found.</p>
 
                 )}
+                   
 
-                {filteredClaims.map((claim) => (
-                    <div className="claim-card"
-                    key={claim.id}>
+                 {/*Display claims*/}  
 
-                    <h3> Claim #{claim.id} </h3> 
-
-                        <p>
-                            <strong>Provider:</strong>{" "}
-                            {claim.providerName}
-                        </p>
-
-
-                        <p>
-                            <strong>Service:</strong>{" "}
-                            {claim.service}
-                        </p>
-
-
-                        <p>
-                            <strong>Date:</strong>{" "}
-                            {claim.dateOfService}
-                        </p>
-
-
-                        <p>
-                            <strong>Amount:</strong>{" "}
-                            ${claim.amount}
-                        </p>
-
-
-                        <p>
-                            <strong>Description:</strong>{" "}
-                            {claim.description}
-                        </p>
-
-
-                        <p>
-                            <strong>Status:</strong>{" "}
-
-                            <span
-                                className={
-                                    "status " +
-                                    getStatus(claim.status)
-                                }
-                            >
-                                {getStatus(claim.status)}
-                            </span>
-
-                        </p>
-
-                    </div>
+                {!loading && filteredClaims.map((claim) => (
+                    <ClaimCard key={claim.id} claim={claim} />
 
                 ))}
 

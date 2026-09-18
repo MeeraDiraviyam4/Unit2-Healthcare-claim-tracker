@@ -1,5 +1,6 @@
 
 function ClaimCard({ claim }) {
+
     return(
        
         
@@ -28,7 +29,7 @@ function ClaimCard({ claim }) {
 
              {/* Displays the claim amount */}
              <p> 
-                <strong>Amount:</strong> {claim.amount}
+                <strong>Amount:</strong>{" "} ${claim.amount}
              </p>
 
              {/* Displays the claim status like pending, approved or denied */}
