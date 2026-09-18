@@ -22,7 +22,7 @@ function Navbar() {
             <div className="nav-links">
                 {isStaff ? (
                     <>
-                        <Link to="/staff-dashboard"> Dashboard </Link>
+                        <Link to="/staff-dashboard"> Staff Dashboard </Link>
 
                         <Link to="/staff-claims"> View All Claims </Link>
                           
@@ -30,7 +30,7 @@ function Navbar() {
                     </>
                 ) : (
                     <>
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/member-dashboard">Member Dashboard</Link>
                                                 
                         <Link to="/claims">Claims</Link>
                          

@@ -19,6 +19,7 @@ function Login() {
 
         try {
              const loggedInUser = await loginUser(user);
+             
              // Save the logged-in user's information
             // in localStorage
              localStorage.setItem(
@@ -27,7 +28,7 @@ function Login() {
              );
              alert("Login successful!");
 
-             navigate("/dashboard");
+             navigate("/member-dashboard");
 
         } catch (error) {
             alert("Login failed. Please check your email and password");

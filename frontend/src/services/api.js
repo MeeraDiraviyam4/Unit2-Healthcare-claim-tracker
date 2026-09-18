@@ -67,7 +67,7 @@ export async function loginUser(user) {
     }    
 
     //Get claims for one member
-     export async function getClaimByUser(userId) {
+     export async function getClaimsByUser(userId) {
     const response = await fetch(`${API_URL}/claims/user/${userId}`,
         );
 

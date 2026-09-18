@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api";
+import { Link } from "react-router-dom";
 
 function StaffLogin() {
 
@@ -73,7 +74,12 @@ function StaffLogin() {
                     <div>
 
                         <button type="submit">Staff Login</button>
+                        <p>
+
+                         <Link to="/" className="back home">Back to Home </Link>
+                        </p>
                     </div>
+
 
             </form>
 

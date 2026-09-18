@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import StaffLogin from "./pages/StaffLogin";
 import About from "./pages/About";
 
-import Dashboard from "./pages/Dashboard";
+import MemberDashboard from "./pages/MemberDashboard";
 import Claims from "./pages/Claims";
 import Register from "./pages/Register";
 import Payment from "./pages/Payment";
@@ -26,7 +26,7 @@ function App() {
 
         {/* Member Pages */}
         <Route path="/member-login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/member-dashboard" element={<MemberDashboard />} />
         <Route path="/claims" element={<Claims />} />
         <Route path="/register" element={<Register />} />
         <Route path="/payment" element={<Payment />} />

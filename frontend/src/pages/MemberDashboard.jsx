@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 
 
-function Dashboard() {
+function MemberDashboard() {
 
     const user = JSON.parse(
         localStorage.getItem("user")

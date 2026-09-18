@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ClaimCard from "../components/ClaimCard";
-import { getAllClaims, deleteClaim} from "../services/api";
+//import { getAllClaims, deleteClaim} from "../services/api";
 
 function StaffClaims() {
 
