@@ -49,7 +49,10 @@ function ClaimCard({ claim }) {
 
             <p>
                 <strong>Submitted:</strong>{" "}
-                {claim.submittedDate}
+                {claim.submittedDate
+                    ? claim.submittedDate
+                    : "Not available"
+                }
             </p>
 
         </div>
