@@ -60,7 +60,7 @@ function Claims() {
         }
         
         //else show matching status
-        return getStatus(claim.status) === statusFilter;
+        return (getStatus(claim.status) === statusFilter);
 
     });
 
@@ -86,7 +86,7 @@ function Claims() {
                         <option value="PENDING"> Pending </option>
                         <option value="APPROVED">Approved</option>
                         <option value="DENIED"> Denied </option>
-                       </select>
+                    </select>
 
                 </div>
 
@@ -95,7 +95,7 @@ function Claims() {
                     <p> Loading claims...</p>
                 )}
 
-                {loading && filteredClaims.length === 0 && (
+                {!loading && filteredClaims.length === 0 && (
                   
                   <p>No claims found.</p>
 
