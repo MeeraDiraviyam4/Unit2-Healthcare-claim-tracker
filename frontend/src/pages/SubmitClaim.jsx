@@ -19,7 +19,22 @@ function SubmitClaim() {
 
         event.preventDefault();
 
+        //get the loggedin member
+        const user = JSON.parse(
+            localStorage.getItem("user")
+        );
+
+        //make sure if the user is loggedin
+        if (!user) {
+
+            alert("Please login first");
+            navigate("/member-login");
+            return;
+        }
+
+        //create a claim
         const claim = {
+            userId: user.id,
             providerName: providerName,
             service: service,
             description: description,
@@ -28,11 +43,11 @@ function SubmitClaim() {
         };
 
         try {
-            await createClaim(claim);
+            await createClaim(claim);// send claim to backend
 
             alert("Claim submitted successfully!");
 
-            navigate("/claims");
+            navigate("/claims");//go to my claims
 
         } catch (error) {
 
