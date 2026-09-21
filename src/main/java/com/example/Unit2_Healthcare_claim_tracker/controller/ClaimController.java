@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/claims")
@@ -37,6 +38,8 @@ public class ClaimController {
         if (claim.getStatus() == null) {
             claim.setStatus("Pending");
         }
+        //save today's date
+        claim.setSubmittedDate(LocalDate.now());
         return claimRepository.save(claim);
     }
 
