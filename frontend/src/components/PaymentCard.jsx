@@ -4,7 +4,7 @@ function PaymentCard({ payment }) {
         <div className="payment-card">
 
             <h3> Payment Information </h3>
-
+            
             <p> 
                 <strong>Payment ID:</strong> {payment.id} 
             </p>
