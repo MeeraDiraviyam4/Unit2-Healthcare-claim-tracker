@@ -19,7 +19,7 @@ function ClaimCard({ claim }) {
 
              {/* Displays the description */}
              <p> 
-                <strong>Service:</strong> {claim.description} 
+                <strong>Description:</strong> {claim.description} 
              </p>
 
              {/* Displays the date on which the service was provided */}
