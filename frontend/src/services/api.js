@@ -44,8 +44,7 @@ export async function loginUser(user) {
 
     //Get all claims
     export async function getAllClaims() {
-    const response = await fetch(`${API_URL}/claims`,
-        );
+    const response = await fetch(`${API_URL}/claims`);
 
         if (!response.ok) {
             throw new Error("Could not get claims");
@@ -56,8 +55,7 @@ export async function loginUser(user) {
 
     //Get one claim by ID
     export async function getClaimById(id) {
-    const response = await fetch(`${API_URL}/claims/${id}`,
-        );
+    const response = await fetch(`${API_URL}/claims/${id}`);
 
         if (!response.ok) {
             throw new Error("Could not get claim");
@@ -68,8 +66,7 @@ export async function loginUser(user) {
 
     //Get claims for one member
      export async function getClaimsByUser(userId) {
-    const response = await fetch(`${API_URL}/claims/user/${userId}`,
-        );
+    const response = await fetch(`${API_URL}/claims/user/${userId}`);
 
         if (!response.ok) {
             throw new Error("Could not get member claims");
@@ -121,7 +118,7 @@ export async function loginUser(user) {
     }
 
     //delete a claim
-    export async function deleteClaim(id, claim) {
+    export async function deleteClaim(id) {
     const response = await fetch(`${API_URL}/claims/${id}`,
         {
             method: "DELETE",
@@ -136,10 +133,9 @@ export async function loginUser(user) {
        return;
 
     }
-
-
-    
+   
     //Payments
+    
     //Get payment for a claim
     export async function getPayment(claimId) {
     const response = await fetch(`${API_URL}/payments/claim/${claimId}`,
@@ -153,9 +149,41 @@ export async function loginUser(user) {
 
     }
 
+    //get all payments
+    export async function getAllPayments() {
+    const response = await fetch(`${API_URL}/payments`);
+    
+    if (!response.ok) {
+        throw new Error("Could not get payments");
+    }
+ 
+       return response.json();
+
+    }
+
+     //create a payment
+    export async function createPayment(payment) {
+    const response = await fetch(`${API_URL}/payments` , {
+       method: "POST",
+
+       headers: {
+             "Content-Type": "application/json"
+       },
+
+       body: JSON.stringify(payment)
+    });
+
+    if (!response.ok) {
+        throw new Error("Could not create payment");
+    }
+ 
+       return response.json();
+
+    }
+
     //update a payment
-    export async function updatePayment(claimId, payment) {
-    const response = await fetch(`${API_URL}/payments/${claimId}`,
+    export async function updatePayment(paymentId, payment) {
+    const response = await fetch(`${API_URL}/payments/${paymentId}`,
         {
             method: "PUT",
 
