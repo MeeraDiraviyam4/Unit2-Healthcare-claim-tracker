@@ -9,9 +9,9 @@ function MemberDashboard() {
     );
     
      return (
-        <div>
-
-            <Navbar />
+      <>
+       <Navbar />
+        <main className="dashboard-page">
 
             <div className="dashboard-container">
 
@@ -66,9 +66,9 @@ function MemberDashboard() {
               </div>
         </div>
 
-        </div>
-
-    );
+        </main>
+    </>
+  );
 }
 
 export default MemberDashboard;
