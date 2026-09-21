@@ -8,8 +8,8 @@ function Claims() {
     const [claims, setClaims] = useState([]); // stores all claims
     const [loading, setLoading] = useState(true); // track loading
     const [statusFilter, setStatusFilter] = useState("ALL"); // store selected filter
+    const [message, setMessage] = useState("");
 
-    
     useEffect(() => {
 
         loadClaims();
@@ -26,7 +26,7 @@ function Claims() {
             //make sure if the user is logged in
             if (!user){
 
-                alert("Please login first");
+                setMessage("Please login first");
 
                 return;
             }
@@ -37,7 +37,7 @@ function Claims() {
 
         } catch (error) {
 
-            alert(" Could not load claims. ");
+            setMessage(" Could not load claims. ");
 
         } finally {
 
@@ -67,11 +67,15 @@ function Claims() {
     return (
         <div>
 
-            <Navbar />
+          <Navbar />
 
-            <div className="claims-container">
+            <main className="app-page">
+
+             <div className="claims-container">
 
                 <h1>My Claims</h1>
+
+                {message && ( <p className="error-message"> {message} </p> )}
 
                 {/*status filter */}
                 <div className="filter-box">
@@ -109,8 +113,8 @@ function Claims() {
 
                 ))}
 
-            </div>
-
+              </div>
+            </main>
         </div>
     );
 }
