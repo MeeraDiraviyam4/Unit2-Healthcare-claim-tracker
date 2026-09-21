@@ -1,29 +1,33 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { getAllClaims, getClaimById, deleteClaim} from "../services/api";
+import { getAllClaims, getClaimById, updateClaim, deleteClaim} from "../services/api";
 
 function StaffClaims() {
 
-    const [claims, SetClaims] = useState([]);
+    const [claims, setClaims] = useState([]);
     const [claimId, setClaimId] = useState("");
     const [selectedClaim, setSelectedClaim] = useState(null);
     const [statusFilter, setStatusFilter] = useState("ALL");
+    const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
+    const [deleteId, setDeleteId] = useState(null);
 
     useEffect(() => {
         loadClaims();
     }, [])
 
-     // search for all claims
+     // get all  the claims from the backend
     async function loadClaims() {
 
         try {
-                   const data = await getAllClaims();
+               setError("");  
+               const data = await getAllClaims();
         
-                    SetClaims(data);
+                    setClaims(data);
         
-                } catch (error) {
+            } catch (error) {
         
-                    alert("Could not load claims");
+                    setError("Could not load claims. Please try again");
                     
                 }
         
@@ -32,6 +36,12 @@ function StaffClaims() {
     // search for one claim
     async function handleSearch(event) {
         event.preventDefault();
+        setError("");
+        setMessage("");
+
+        if (!claimId || Number(claimId) <= 0) {
+            setError("Please enter a valid Claim Id")
+        }
         
         try{
 
@@ -43,7 +53,7 @@ function StaffClaims() {
 
             setSelectedClaim(null);
 
-            alert("Claim not found");
+            setError("Claim not found");
         }
         
     }
@@ -54,6 +64,8 @@ function StaffClaims() {
         setSelectedClaim(null);
 
         setClaimId("");
+        setError("");
+        setMessage("");
      
     }
 
@@ -63,35 +75,71 @@ function StaffClaims() {
     
     }
 
-    //Delete a claim
-    async function handleDelete(id) {
+    // Ask the user to confirm deletion
+    function requestDelete(claimIdToDelete) {
+        setDeleteId(claimIdToDelete);
+        setError("");
+        setMessage("");
+    }
 
-        const answer = window.confirm(
-            "Are you sure to delete this claim?"
-        );
-
-        if (!answer) {
+    //delete the selected claim
+    async function handleDelete() {
+        if(!deleteId) {
             return;
         }
-          
+               
     try {
-        await deleteClaim(id); //calling backend delete api
+        await deleteClaim(deleteId); 
 
-        alert("Claim deleted successfully");
+        setMessage("Claim deleted successfully");
+        setDeleteId(null);
+        
 
-        loadClaims(); //laods tha claims again and deleted claim disappears
+        // If the deleted claim was being viewed, // go back to the claim list
+        if (selectedClaim?.id === deleteId) {
+                setSelectedClaim(null);
+            }
+
+            await loadClaims(); //laods tha claims again and deleted claim disappears
 
     } catch (error) {
 
-        alert("could not delete claim");
-
+        setError("Could not delete claim.Please try again");
+        setDeleteId(null);
       }
         
     }
 
+    //cancel delete confirmation
+    function cancelDelete() {
+        setDeleteId(null);
+    }
+
+      //Approve or Deny a claim
+      async function handleStatusChange(claim, newStatus) {
+
+        try {
+             setError("");   
+             setMessage("");
+
+             await updateClaim(claim.id, {
+                ...claim,
+                status: newStatus
+            });
+
+            setMessage(`Claim #${claim.id} was updated to ${newStatus}`);
+
+           await loadClaims();
+
+        } catch (error) {
+
+            setError("Could not update the claim status");
+        }
+                
+      }
+
     //filter the claims
-    const filteredClaims = claims.filter(
-        (claim) => {
+    const filteredClaims = claims.filter((claim) => {
 
             if (statusFilter === "ALL") {
 
@@ -99,9 +147,7 @@ function StaffClaims() {
             }
 
             return (
-
-                getStatus(claim.status) ===
-                statusFilter
+                getStatus(claim.status) === statusFilter
             );
         }
     );
@@ -111,45 +157,54 @@ function StaffClaims() {
 
             <Navbar />
 
+            <main className="app-page">
+
             <div className="claims-container">
+
+              <header className="page-header">
 
                 <h1>All Claims</h1>
 
-                 {/*search by claim id */}
+                <p>Review and manage member healthcare claims.</p>
+            </header>    
 
-                 <div className="search-box">
+            {message && ( <p className="success-message"> {message} </p> )}
 
-                    <h3> Find a Claim </h3>
+            {error && ( <p className="error-message" role="alert"> {error} </p>)}
+               
+            {/* Search section */}
+                <section className="search-box" aria-labelledby="search-heading">
+                    <h2 id="search-heading">Find a Claim</h2>
 
                     <form onSubmit={handleSearch}>
 
                         <input 
+                           id="claimId"
                            type="number"
+                           min="1"
                            value={claimId}
                            onChange={(event) => setClaimId(event.target.value)}
-
                            placeholder="Enter Claim Id"
-                           required
-                           />
+                           required>
+                        </input>
 
-                           <button type="submit">
-                              search
-                           </button>
+                           <button type="submit"> search </button>
 
                            <button type="button"
                                    onClick={showAllClaims}>
                                     show ALL
-                                   </button>
+                            </button>
                             
                     </form>
-                 </div>
+                </section>
 
-                 {/*search for particular claim */}
-                 {selectedClaim && (
+        {/*selected claim details*/}
+            {selectedClaim && (
                     
-                    <div className="claim-details">
+               <section className="claim-details"
+                        aria-labelledby="claim-details-heading">
 
-                        <h2> Claim Details </h2>
+                    <h2 id="claim-details-heading"> Claim Details </h2>
 
                         <p> <strong> Claim ID: </strong>{" "} {selectedClaim.id} </p>
 
@@ -163,96 +218,138 @@ function StaffClaims() {
 
                         <p> <strong> Description: </strong>{" "} {selectedClaim.description} </p>
 
-                        <p> <strong> Status: </strong>{" "} {selectedClaim.status} </p>
+                        <p> <strong> Status: </strong>{" "} {getStatus(selectedClaim.status)} </p>
 
                         <p> <strong> Submitted: </strong>{" "} {selectedClaim.submittedDate} </p>
 
-                        <button onClick={showAllClaims}>
-                            Back to All Claims
+                        <button  type="button" onClick={showAllClaims}>
+                                 Back to All Claims
                         </button>
 
-                    </div>    
+                </section>    
                  )}
                   
-                  {/*status filter */}
-                  {!selectedClaim && (
-                    <div>
-                      <div className="filter-box">
+        {/*claim list when no cliam is selected */}
+            {!selectedClaim && (
+                 <section>
+                        <div className="filter-box">
+                            <h2> Claim List </h2>
 
-                        <label> Filter by Status:</label>
+                            <label htmlFor="statusFilter"> Filter by Status:</label>
 
-                        <select value={statusFilter}
-                                onChange={(event) => setStatusFilter(event.target.value)}>
-
-                                    <option value="ALL">
-                                       All Claims 
-                                    </option>
-
-                                    <option value="PENDING">
-                                       Pending 
-                                    </option>   
-
-                                    <option value="APPROVED">
-                                       Approved 
-                                    </option>   
-
-                                    <option value="DENIED">
-                                       Denied 
-                                    </option>  
-
-                        </select>         
-
-                        </div>
-
-                        {/*claim list */}
-                        {filteredClaims.map(
-                            (claim) => (
+                        <select  id="statusFilter"
+                                 value={statusFilter}
+                                 onChange={(event) => setStatusFilter(event.target.value)}>
                                
-                                <div className="claim-card"
-                                     key={claim.id}
+                                <option value="ALL"> All Claims </option>
+                                                              
+                                <option value="PENDING"> Pending </option>
+                                       
+                                <option value="APPROVED"> Approved </option>
+                                     
+                                <option value="DENIED"> Denied </option>
+                                 
+                        </select>         
+                    </div>
 
-                                >
-                                    <h3> Claim #{claim.id}</h3>
+                    {/* Message when there are no claims */}
+                    {filteredClaims.length === 0 && (
+                            <p className="empty-message">
+                                No claims found for this filter.
+                            </p>
+                        )}                           
 
-                                    <p> <strong>Provider:</strong>{" "}
-                                        {claim.providerName}
-                                    </p>
+                    {/* Display claims*/}
+                    {filteredClaims.map((claim) => (
+                               
+                       <div className="claim-card"
+                            key={claim.id}
+                        >
+                            <h3> Claim #{claim.id}</h3>
+                            
+                            <p> <strong>Provider:</strong>{" "}
+                                  {claim.providerName}
+                            </p>
 
-                                    <p> <strong>Service:</strong>{" "}
-                                        {claim.service}
-                                    </p>   
+                            <p> <strong>Service:</strong>{" "}
+                                  {claim.service}
+                            </p>   
 
-                                    <p> <strong>Amount:</strong>{" "}
-                                        ${claim.amount}
-                                    </p> 
+                            <p> <strong>Amount:</strong>{" "}
+                                    ${claim.amount}
+                            </p> 
 
-                                    <p> <strong>Status:</strong>{" "}
+                            <p> <strong>Status:</strong>{" "}
                                          
-                                         <span className={"status " + getStatus(claim.status)}>
+                                     <span className={" status " + getStatus(claim.status)}>
                                             {getStatus(claim.status)}
-                                         </span>
+                                     </span>
+                            </p>
 
-                                    </p>
+                            {/* view details button*/}
 
-                                       <button onClick={() =>
-                                                   setSelectedClaim(claim)}> View Details </button>
+                                <button type ="button" 
+                                        onClick={() => setSelectedClaim(claim)}> 
+                                        
+                                        View Details 
+                                </button>
 
-                                       {/*Delete */}
+                                {/*approve and deny buttons */}
 
-                                        <button onClick={() => 
-                                                  handleDelete(claim.id)
-                                        }> Delete </button>
+                                    {getStatus(claim.status) === "PENDING" && (
+                                           
+                                        <div>
+                                          <button type ="button"
+                                                  onClick={() => handleStatusChange(claim, "APPROVED")
+                                              }>
+                                                  Approve
+                                           </button>
 
-                                    </div>  
-                                     )
-                                     )}
-                        </div>    
+                                           <button type ="button"
+                                                   onClick={() => handleStatusChange(claim, "DENIED")
+                                              }>
+                                                Deny
+                                           </button>
+
+                                            </div>
+
+                                        )}   
+
+                                {/* Delete button */}
+
+                                {/*<button type ="button"
+                                        onClick={() => requestDelete(claim.id)
+
+                                        }>
+                                            Delete
+                                </button> 8/}
+
+                                {/* Delete confiramtion*/}
+
+                                {deleteId === claim.id && (
+                                    <div>
+                                        <p> Are you sure you want to delete this claim?</p>
+
+                                        <button type ="button"
+                                            onClick={handleDelete}>
+                                               Yes, Delete
+                                        </button>
+
+                                        <button type ="button"
+                                            onClick={cancelDelete}>
+                                               Cancel
+                                        </button>
+                                    </div>
                                 )}
-                   </div>
-        </div>   
-
-
-    );
+                                                                              
+                           </div>  
+                        ))}
+                        </section>    
+                    )}
+              </div>
+            </main>   
+        </div> 
+   );
 }  
 
 export default StaffClaims;
