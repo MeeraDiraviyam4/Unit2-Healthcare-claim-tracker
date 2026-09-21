@@ -1,26 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 //import PaymentCard from "../components/PaymentCard";
-import { getPayment } from "../services/api";
+import { getClaimsByUser, getPayment } from "../services/api";
 
 function Payment() {
 
-    const [claimId, setClaimId] = useState("");
-    const [payment, setPayment] = useState(null);
+    const [claims, setClaims] = useState([]);
+    const [payments, setPayments] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState("");
 
-    async function handlesearch(event) {
+    useEffect(() => {
+        loadPaymentInformation();
+    }, []);
+
+    async function loadPaymentInformation() {
         
-        event.preventDefault();
-
         try {
-           
-            const data = await getPayment(claimId);
+           // get the loggedin user
+            const user = JSON.parse(localStorage.getItem("user"));
 
-            setPayment(data);
+            if (!user) {
+                setMessage("Please login first");
+                return;
+            }
+
+            //get only the loggedin user's claims
+            const userClaims = await getClaimsByUser(user.id);
+            setClaims(userClaims);
+
+            //get payment information for each claim
+            const paymentData = {};
+
+            for (const claim of userClaims) {
+
+                try{
+                    const payment = await getPayment(claim.id);
+                       paymentData[claim.id] = payment;
+
+                } catch (error) {
+                    paymentData[claim.id] = null;
+                }
+            }
+
+            setPayments(paymentData);
 
         } catch (error) {
+            setMessage("could not load payment information");
 
-            alert("Could not find payment information.");
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -29,51 +58,62 @@ function Payment() {
 
             <Navbar />
 
-            <div className="form-container">
+            <main className="app-page">
+
+            <div className="page-container">
 
                 <h1>Payment Status</h1>
 
-                <form onSubmit={handlesearch}>
+                {message && ( <p className="error-message"> {message} </p> )}
 
-                    <label>Claim ID:</label>
+                {loading && (
+                    <p>Loading payment information...</p>
+                )}
 
-                    <input
-                      type="number"
-                      value={claimId}
-                      onChange={(event) => setClaimId(event.target.value)}
-                      placeholder="Enter Claim ID"
-                      required
-                      />
+                {!loading && claims.length === 0 && (
+                    <p>You have no claims yet</p>
+                )}
 
-                      <button type="submit">
-                        View Payment
-                      </button>
+                {!loading && claims.map((claim) => {
+                    const payment = payments[claim.id];
+                    
+                    return (
+                        <div className="payment-card" key={claim.id}>
 
-                </form>
+                            <h2>Claim #{claim.id}</h2>
 
-                {payment && (
+                            <p> <strong>Provider:</strong>{" "}
+                                {claim.providerName}
+                            </p>
 
-                    <div className="payment-card">
-                        <h2> Payment Information </h2>
+                            <p> <strong>Claim Amount:</strong>{" "}
+                                {claim.amount}
+                            </p>
 
-                        <p> <strong>Payment ID:</strong>{" "} 
-                            {payment.id}
-                        </p>
+                            <p> <strong>Claim Status:</strong>{" "}
+                                {claim.status?.toUpperCase()}
+                            </p>
 
-                        <p> <strong>Status:</strong>{" "}
-                            {payment.paymentStatus}
-                        </p>
+                            <p> <strong>Payment Status:</strong>{" "}
+                                {payment
+                                    ? payment.paymentStatus
+                                    : claim.status?.toUpperCase() === "APPROVED"
+                                        ? "Payment not yet created"
+                                        : "No payment"
+                                }
+                            </p>
 
-                        <p> <strong>Payment Date:</strong>{" "}
-                            {payment.paymentDate
-                               ? payment.paymentDate
-                               : "Not yet Paid"
-                            }
-                        </p>
-                    </div>
-                )}   
+                            <p> <strong>Payment Date:</strong>{" "}
+                                 {payment?.paymentDate
+                                    ? payment.paymentDate
+                                     : "Not yet Paid"
+                                  }
+                            </p>
+                        </div>
+                    );   
+                })}   
             </div>
-          
+            </main>
         </div>    
     );
 
