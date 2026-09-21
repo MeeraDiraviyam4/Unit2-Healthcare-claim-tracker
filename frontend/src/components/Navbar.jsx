@@ -16,7 +16,8 @@ function Navbar() {
     }
 
     return (
-        <nav className="navbar">
+      <header>
+        <nav className="navbar" aria-label="Main navigation">
             <h2>Healthcare Claim Tracker</h2>
 
             <div className="nav-links">
@@ -45,6 +46,7 @@ function Navbar() {
                 </button>
             </div>
         </nav>
+      </header>    
     );
 }
 
