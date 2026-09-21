@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 
 function StaffDashboard() {
 
-    return (
-
-        <div>
-
-            <Navbar />
+   return (
+   <>
+      <Navbar /> 
+        <main className="dashboard-page">
 
             <div className="dashboard-container">
 
@@ -65,8 +64,9 @@ function StaffDashboard() {
 
             </div>
 
-        </div>
-    );
+        </main>
+    </>    
+  );
 }
 
 export default StaffDashboard;
