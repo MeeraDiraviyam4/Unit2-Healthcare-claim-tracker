@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { getAllClaims, getPayment, createPayment, updatePayment,deleteClaim} from "../services/api"
+import { getAllClaims, getPayment, createPayment, updatePayment,deleteClaim} from "../services/api";
+import Footer from "../components/Footer";
 
 function StaffPayments() {
 
@@ -209,7 +210,7 @@ function StaffPayments() {
             </div>
 
           </main>
-
+         <Footer/>
         </div>
     );
 }
