@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function StaffLogin() {
 
@@ -58,7 +59,7 @@ function StaffLogin() {
     }
         
     return(
-        
+      <div>  
        <main className="login-page">
 
             <div className="login-card">
@@ -122,7 +123,8 @@ function StaffLogin() {
 
         </div>
     </main>
-
+   <Footer />
+  </div> 
  );
 
 }
