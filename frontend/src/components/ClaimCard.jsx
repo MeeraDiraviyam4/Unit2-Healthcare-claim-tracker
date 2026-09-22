@@ -2,7 +2,7 @@ import { useState } from "react";
 function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
 
     const claimStatus = claim.status?.toUpperCase();
-    const [showDetails, setShowDetails] = useState(fetch);
+    const [showDetails, setShowDetails] = useState(false);
    
     // Show the appropriate message based on the claim status
     function getReviewMessage() {
@@ -84,10 +84,15 @@ function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
                     : "Not available"}
             </p>
 
+            {claimStatus === "DENIED" && (
+                        <p className="denial-message"> 
+                            <strong>Denial Reason:</strong> 
+                              This claim was denied after review. Please contact your healthcare provider or insurance representative for more information.
+                        </p>
+                    )} 
 
-            {/* =========================================
-                STAFF CLAIM REVIEW BUTTONS
-                ========================================= */}
+
+            {/*STAFF CLAIM REVIEW BUTTONS*/}
 
             {isStaff && claimStatus === "PENDING" && (
                 <div className="claim-review-buttons">
@@ -122,10 +127,7 @@ function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
             )}
 
 
-            {/* =========================================
-                VIEW DETAILS BUTTON
-                FOR APPROVED / DENIED CLAIMS
-                ========================================= */}
+            {/*VIEW DETAILS BUTTON FOR APPROVED / DENIED CLAIMS*/}
 
             {isStaff &&
                 claimStatus !== "PENDING" && (
@@ -144,11 +146,9 @@ function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
                 )}
 
 
-            {/* =========================================
-                REVIEW / VIEW DETAILS SECTION
-                ========================================= */}
+            {/*REVIEW/VIEW DETAILS SECTION*/}
 
-            {showDetails && (
+            {isStaff && showDetails && (
                 <div className="claim-review-details">
 
                     <h4>
@@ -193,7 +193,7 @@ function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
                             ? claim.submittedDate
                             : "Not available"}
                     </p>
-
+                     
                     <p>
                         <strong>Current Status:</strong>{" "}
 
