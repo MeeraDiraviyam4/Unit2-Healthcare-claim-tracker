@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Home() {
     return (
@@ -123,11 +124,7 @@ function Home() {
 
 
             {/* Footer */}
-            <footer className="home-footer">
-                <p>
-                    © 2026 Healthcare Claim Tracker
-                </p>
-            </footer>
+              <Footer />
 
         </div>
     );
