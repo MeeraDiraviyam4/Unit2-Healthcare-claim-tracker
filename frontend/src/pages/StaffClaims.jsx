@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ClaimCard from "../components/ClaimCard";
 import { getAllClaims, getClaimById, updateClaim } from "../services/api";
+import Footer from "../components/Footer";
 
 function StaffClaims() {
 
@@ -426,7 +427,7 @@ function StaffClaims() {
                 </div>
 
             </main>
-
+           <Footer/>
         </div>
     );
 }
