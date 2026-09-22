@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {registerUser} from  "../services/api";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Register() {
 
@@ -138,6 +139,7 @@ function Register() {
 
         </div>
        </main>
+      <Footer/> 
      </div>   
     );
 
