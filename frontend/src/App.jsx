@@ -3,14 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import StaffLogin from "./pages/StaffLogin";
-import About from "./pages/About";
-
 import MemberDashboard from "./pages/MemberDashboard";
 import Claims from "./pages/Claims";
 import Register from "./pages/Register";
 import Payment from "./pages/Payment";
 import SubmitClaim from "./pages/SubmitClaim";
-
 import StaffPayments from "./pages/StaffPayments";
 import StaffClaims from "./pages/StaffClaims";
 import StaffDashboard from "./pages/StaffDashboard";
@@ -38,9 +35,7 @@ function App() {
         <Route path="/staff-claims" element={<StaffClaims />} />
         <Route path="/staff-payments" element={<StaffPayments />} />
 
-        {/* About us*/}
-        <Route path="/about" element={<About />} />
-        
+               
       </Routes>
 
     </BrowserRouter>
