@@ -54,6 +54,28 @@ body {
   padding: 7px 15px;
 }
 
+/**Footer**/
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    background-color: #173f67;
+    color: white;
+    text-align: center;
+    padding: 25px 20px;
+    font-size: 20px;
+    margin-top: auto;
+}
 
 /** BUTTONS **/
 
@@ -489,7 +511,10 @@ button:active {
 .hero-title h1 {
     margin: 0;
     font-size: 48px;
-    color: #12355b;
+    color: #055f3b;
+    background-color: #e8f5e9;
+    padding: 12px 20px;
+    border-radius: 15px;
     white-space: nowrap;
 }
 
@@ -1069,10 +1094,6 @@ text-align: center;
 .dashboard-page::before,
 .app-page::before {
       content:
-        "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
-        "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
-        "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
-        "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
         "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
         "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
         "Healthcare Claim    Healthcare Claim    Healthcare Claim    Healthcare Claim\A"
