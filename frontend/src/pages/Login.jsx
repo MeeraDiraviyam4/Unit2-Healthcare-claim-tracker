@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {loginUser} from  "../services/api";
+import Footer from "../components/Footer";
 
 function Login() {
  
@@ -61,6 +62,7 @@ function Login() {
     
     
     return(
+       <div>
         <main className="login-page">
 
             <div className="login-card">
@@ -125,8 +127,11 @@ function Login() {
             </p>
             
         </div>
-    </main>    
-    );
+     </main>
+    <Footer />
+   </div>
+   
+ );
 
 }
 export default Login;
