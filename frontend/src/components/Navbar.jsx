@@ -1,14 +1,18 @@
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
     const navigate = useNavigate();
+    const location = useLocation();
 
     const user = JSON.parse(
         localStorage.getItem("user")
     );
 
     const isStaff = user?.role?.toUpperCase() === "STAFF";
+
+    // Hide navigation links on the Register page
+    const isRegisterPage = location.pathname === "/register";
 
     function handleLogout() {
         localStorage.removeItem("user");
@@ -20,6 +24,7 @@ function Navbar() {
         <nav className="navbar" aria-label="Main navigation">
             <h2>Healthcare Claim Tracker</h2>
 
+            {!isRegisterPage && user && (
             <div className="nav-links">
                 {isStaff ? (
                     <>
@@ -45,6 +50,7 @@ function Navbar() {
                     Logout
                 </button>
             </div>
+           )} 
         </nav>
       </header>    
     );
