@@ -183,23 +183,18 @@ Unit2-Healthcare-claim-tracker/
 │
 ├── frontend/
 │   ├── public/
-│   │
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   │
-│   ├── package.json
-│   ├── package-lock.json
-│   └── vite.config.js
+│   └── src/
+│       ├── components/
+│       ├── pages/
+│       ├── services/
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── index.css
 │
 ├── src/
 │   └── main/
 │       ├── java/
 │       │   └── ...
-│       │
 │       └── resources/
 │           └── application.properties
 │
