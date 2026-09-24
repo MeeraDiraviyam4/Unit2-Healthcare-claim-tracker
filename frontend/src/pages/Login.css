@@ -1,0 +1,167 @@
+/** Login page **/
+
+.login-page { 
+  min-height: 100vh;
+  background: linear-gradient( 
+    135deg, #7892a6 0%, #8ac1df 50%, #eef9f7 100% 
+  ); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  padding: 40px 20px; 
+}
+
+/** Login card **/
+
+.login-card { 
+  width: 100%; 
+  max-width: 430px; 
+  background-color: white; 
+  padding: 35px; 
+  border-radius: 16px; 
+  box-shadow: 0 10px 30px rgba(18, 53, 91, 0.15); 
+  text-align: center; 
+  animation: fadeIn 0.6s ease-in-out; 
+}
+
+/** Login Medical icon**/
+
+.login-icon { 
+  width: 65px; 
+  height: 65px; 
+  margin: 0 auto 15px; 
+  background-color: #dce7ed; 
+  border-radius: 50%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-size: 32px; 
+  color: #4abfdf; 
+}
+
+/** Login logo **/
+
+.login-logo {
+  width:75px;
+  height: 65px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+/** Login Title **/
+
+.login-card h1 {
+    margin: 0;
+    color: #12355b;
+    font-size: 28px;
+}
+
+/** Login Heading**/
+
+.login-card h2 { 
+  color: #021217; 
+  margin-top: 10px; 
+  margin-bottom: 8px; 
+  font-size: 22px; 
+}
+
+/** Login description**/
+
+.login-description {
+   color: #0d4dd6; 
+   margin-bottom: 25px; 
+   line-height: 1.5; 
+}
+
+/** Login form**/
+.login-card form {
+  display: flex;
+  flex-direction: column; 
+  text-align: left;
+}
+
+/**Login label**/
+.login-card label {
+   margin-top: 12px; 
+   margin-bottom: 5px; 
+   font-weight: bold; 
+   color: #07337e;
+}
+
+/** login input**/
+.login-card input {
+   width: 100%;
+   padding: 12px;
+   border: 1px solid #cfd8e3 ;
+   border-radius: 6px;
+   font-size: 15px;
+   transition: 0.3s ease;
+}
+
+/** Login input focus**/ 
+.login-card input:focus { 
+outline: none; 
+border-color: #2209dc; 
+box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12); 
+} 
+
+/** Login button **/ 
+.login-card button { 
+width: 100%; 
+margin-top: 22px; 
+padding: 12px; 
+background-color: #168aad; 
+color: white; 
+border: none; 
+border-radius: 6px; 
+font-size: 16px; 
+font-weight: bold; 
+cursor: pointer; 
+transition: 0.3s ease; 
+} 
+
+/** Login button hover **/ 
+.login-card button:hover { 
+background-color: #126f8a; 
+transform: translateY(-1px); 
+} 
+
+/** Register link **/ 
+.register-text { 
+margin-top: 22px; 
+color: #032570; 
+} 
+.register-text a { 
+color: #053463; 
+font-weight: bold; 
+text-decoration: none; 
+} 
+.register-text a:hover { 
+text-decoration: underline; 
+} 
+
+/** Back Home **/ 
+.login-card .back-home { 
+display: inline-block; 
+margin-top: 15px; 
+color: #52606d; 
+text-decoration: none; 
+} 
+.login-card .back-home:hover { 
+text-decoration: underline; 
+} 
+
+/** Login error message **/ 
+.login-card .error-message { 
+margin-top: 15px; 
+margin-bottom: 10px; 
+text-align: center; 
+} 
+
+/** Login success message **/ 
+.login-card .success-message { 
+margin-top: 15px; 
+margin-bottom: 10px; 
+text-align: center; 
+}

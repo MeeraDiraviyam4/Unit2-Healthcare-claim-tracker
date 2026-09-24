@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { getClaimsByUser, getPayment } from "../services/api";
 import Footer from "../components/Footer";
+import "./Payment.css";
+import "../components/PaymentCard.css";
 
 function Payment() {
 
@@ -60,7 +62,7 @@ function Payment() {
 
             <main className="app-page">
 
-            <div className="page-container">
+            <div className="page-container payment-container">
 
                 <h1>Payment Status</h1>
 

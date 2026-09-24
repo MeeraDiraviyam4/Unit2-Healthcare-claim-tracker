@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./ClaimCard.css";
+
 function ClaimCard({ claim, isStaff = false, onApprove, onDeny }) {
 
     const claimStatus = claim.status?.toUpperCase();

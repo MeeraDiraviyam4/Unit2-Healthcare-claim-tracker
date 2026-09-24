@@ -1,0 +1,64 @@
+  /**Register Form**/
+
+.form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  animation: fadeIn 0.8s ease-in;
+}
+
+.form-container h1,
+.form-container h2 {
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-container input,
+.form-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.form-container button {
+  margin-top: 15px;
+}
+
+/** Input focus**/
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+    outline: 2px solid #1976d2;
+    border-color: #1976d2;
+}
+
+/** RESPONSIVE FORM **/
+
+@media (max-width: 800px) {
+  .form-container {
+    margin: 30px 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-container {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+}

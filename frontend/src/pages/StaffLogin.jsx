@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "../services/api";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import "./Login.css";
 
 function StaffLogin() {
 
@@ -129,4 +130,3 @@ function StaffLogin() {
 
 }
 export default StaffLogin;
-
