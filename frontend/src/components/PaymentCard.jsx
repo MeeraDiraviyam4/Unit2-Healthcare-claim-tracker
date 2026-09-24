@@ -1,3 +1,5 @@
+import "./PaymentCard.css";
+
 function PaymentCard({ payment }) {
 
     return (

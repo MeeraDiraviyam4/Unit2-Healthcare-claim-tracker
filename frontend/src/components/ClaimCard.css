@@ -1,0 +1,72 @@
+.claim-card {
+  background-color: white;
+  padding: 25px 30px;
+  margin-bottom: 20px;
+  border: 1px solid #bbb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  transition: 0.2s ease;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.claim-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.claim-card h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  color: #12355b;
+  font-size: 22px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+}
+
+.claim-card p {
+  margin: 10px 0;
+  color: #425466;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.claim-card p strong {
+  color: #263f57;
+}
+
+/**CLAIM STATUS* */
+
+.status {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-left: 4px;
+}
+
+.denial-message {
+    background-color: #fff5f5;
+    border-left: 4px solid #b42318;
+    padding: 10px 12px;
+    border-radius: 5px;
+    color: #7a1c1c !important;
+    font-size: 15px !important;
+    margin-top: 12px !important;
+}
+
+.PENDING {
+  background-color: #fff3cd;
+  color: #946200;
+}
+
+.APPROVED {
+  background-color: #d8d5c8;
+  color: #18794e;
+}
+
+.DENIED {
+  background-color: #f1eeee;
+  color: #b42318;
+}

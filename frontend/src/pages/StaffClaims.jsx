@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import ClaimCard from "../components/ClaimCard";
 import { getAllClaims, getClaimById, updateClaim } from "../services/api";
 import Footer from "../components/Footer";
+import "./StaffClaims.css";
 
 function StaffClaims() {
 
@@ -69,13 +70,21 @@ function StaffClaims() {
 
             const data = await getClaimById(claimId);
 
+            //No claim was found
+            if (!data) {
+                selectedClaim(null);
+                setError(`No claim found with Claim ID ${claimId}`);
+                return
+            }
+
+            // claim was found
             setSelectedClaim(data);
 
-        } catch (error) {
+        } catch {
 
             setSelectedClaim(null);
 
-            setError("Claim not found.");
+            setError(`No claim found with Claim ID ${claimId}`);
         }
     }
 

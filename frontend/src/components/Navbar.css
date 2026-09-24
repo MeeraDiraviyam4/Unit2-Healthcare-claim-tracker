@@ -1,0 +1,42 @@
+/** NAVIGATION BAR **/
+
+.navbar {
+  background-color: #243447;
+  color: white;
+  padding: 15px 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.logout-button {
+  background-color: #f1eeee;
+  color: #333;
+  padding: 7px 15px;
+}

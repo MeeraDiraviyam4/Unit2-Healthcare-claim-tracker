@@ -1,0 +1,24 @@
+/**CLAIMS Page**/
+
+.claims-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+/**FILTER**/
+
+.filter-box {
+  margin-bottom: 20px;
+}
+
+.filter-box label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.filter-box select {
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+}

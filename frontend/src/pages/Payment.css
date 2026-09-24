@@ -1,0 +1,11 @@
+/** PAYMENT PAGE **/
+
+.payment-container {
+    text-align: center;
+}
+
+.payment-container .payment-card {
+    max-width: 600px;
+    margin: 25px auto;
+    text-align: left;
+}

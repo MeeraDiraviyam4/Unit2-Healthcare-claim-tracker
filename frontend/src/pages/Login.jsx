@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {loginUser} from  "../services/api";
 import Footer from "../components/Footer";
+import "./Login.css";
 
 function Login() {
  

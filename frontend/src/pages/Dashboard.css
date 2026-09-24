@@ -1,0 +1,97 @@
+/* Dashboard page */
+
+.dashboard-page {
+    min-height: 100vh;
+    padding: 50px 20px;
+    background-color: #eaf6ff;
+    /* Simple healthcare-style background */
+    background-image:
+        radial-gradient(circle at 10% 20%, #d8f0fa 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #dff5f1 0, transparent 25%);
+}
+
+/* Dashboard content */
+
+.dashboard-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Dashboard title  */
+
+.dashboard-container h1 {
+    font-size: 42px;
+    color: #12355b;
+    margin-bottom: 12px;
+}
+
+/* Dashboard description  */
+
+.dashboard-container > p {
+    font-size: 28px;
+    color: #52606d;
+    margin-bottom: 40px;
+}
+
+/* Dashboard cards */
+
+.dashboard-grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* card */
+
+.dashboard-box {
+    background-color: white;
+    padding: 35px 30px;
+    min-height: 190px;
+    border-radius: 12px;
+    border: 1px solid #d9e6ef;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Card title */
+
+.dashboard-box h2 {
+    font-size: 25px;
+    color: #12355b;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Card text */
+
+.dashboard-box p {
+    font-size: 20px;
+    line-height: 1.5;
+    color: #52606d;
+    margin-bottom: 20px;
+}
+
+/** Button **/
+
+.dashboard-box button {
+    font-size: 18px;
+    padding: 11px 22px;
+    background-color: #168aad;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/** Button hover **/
+
+.dashboard-box button:hover {
+    background-color: #126f8a;
+    transform: translateY(-2px);
+}
